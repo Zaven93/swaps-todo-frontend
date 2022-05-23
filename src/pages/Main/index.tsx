@@ -23,7 +23,7 @@ const MainPage = () => {
   useEffect(() => {
     getTodos()
       .then((todos) => {
-        dispatch({ type: "ADD_TODOS", payload: todos });
+        dispatch({ type: "ADD_TODOS", payload: todos || [] });
       })
       .catch((error) => console.log(error));
     // eslint-disable-next-line

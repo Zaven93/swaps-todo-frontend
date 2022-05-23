@@ -68,6 +68,7 @@ export const editTodo = async ({
 };
 
 export const removeTodo = async (id: string) => {
+  console.log("Remove is is", id);
   if (!id) return;
   try {
     const { data } = await axios.delete(`${BASE_URL}/api/todo/${id}`);

@@ -59,14 +59,19 @@ const TodoModal: FC<TodoModalProps> = ({
         });
       }
 
+      console.log("state is", state);
+      console.log("state todos are", state.todos);
+
       if (dispatch && Array.isArray(state.todos)) {
-        const filteredTodos = state.todos.filter(
-          (item) => item._id !== todo._id
-        );
+        let filteredTodos = state.todos.filter((item) => item._id !== todo._id);
+
+        filteredTodos = [...filteredTodos, todo];
+
+        console.log("Filtered todos", filteredTodos);
         dispatch({ type: "ADD_TITLE", payload: "" });
         dispatch({ type: "ADD_DESCRIPTION", payload: "" });
         dispatch({ type: "ADD_STATUS", payload: "active" });
-        dispatch({ type: "ADD_TODOS", payload: [...filteredTodos, todo] });
+        dispatch({ type: "ADD_TODOS", payload: filteredTodos });
       }
       setLoading(false);
       reset();
